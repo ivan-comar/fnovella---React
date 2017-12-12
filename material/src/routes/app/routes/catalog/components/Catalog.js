@@ -6,9 +6,9 @@ import ListElements from './ListElements';
 const optionsName = 'Catalogo';
 
 class MainOptions extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
     return (
       <article className="article padding-lg-v article-bordered">
@@ -74,48 +74,45 @@ class MainOptions extends React.Component {
 
         </div>
       </article>
-    )
-  };
+    );
+  }
 }
-
-
-
 
 class Catalog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: "ADD_ELEMENT"
+      active: 'ADD_ELEMENT'
     };
-    this.changeView = this.changeView.bind(this); //bind this element
+    this.changeView = this.changeView.bind(this); // bind this element
   }
 
-  changeView(data){
+  changeView(data) {
     this.setState({ active: data });
   }
 
   activeView() {
-    switch(this.state.active) {
+    switch (this.state.active) {
       case 'ADD_ELEMENT':
         return <EditForm />;
-      case "VIEW_ELEMENT":
+      case 'VIEW_ELEMENT':
         return <ListElements />;
       default:
         return null;
     }
   }
   render() {
-      return (
-        <div className="container-fluid no-breadcrumbs page-dashboard">
+    return (
+      <div className="container-fluid no-breadcrumbs page-dashboard">
 
-          <QueueAnim type="bottom" className="ui-animate">
-            <div key="1"><MainOptions changeView={ this.changeView } /></div>
-            <hr/>
-            <div key="2">{ this.activeView() }</div>
-          </QueueAnim>
+        <QueueAnim type="bottom" className="ui-animate">
+          <div key="1"><MainOptions changeView={this.changeView} /></div>
+          <hr />
+          <div key="2">{ this.activeView() }</div>
+        </QueueAnim>
 
-        </div>
-      );
+      </div>
+    );
   }
 }
 
